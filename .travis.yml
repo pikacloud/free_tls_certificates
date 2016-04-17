@@ -7,11 +7,10 @@ install:
 services:
   - docker
 before_script:
-  - git clone https://github.com/letsencrypt/boulder.git
+  - docker run -d -e MYSQL_ALLOW_EMPTY_PASSWORD=yes --name boulder-mysql mariadb:10.0 mysqld --bind-address=0.0.0.0
+  - docker run -d -e RABBITMQ_NODE_IP_ADDRESS=0.0.0.0 --name boulder-rabbitmq rabbitmq:3
+  - docker run -d -p 4000:4000 -p 4002:4002 -p 4003:4003 -p 8053:8053 -p 8055:8055 --name boulder --link=boulder-mysql:boulder-mysql --link=boulder-rabbitmq:boulder-rabbitmq --add-host=boulder:127.0.0.1 letsencrypt/boulder
 script:
-  - cd boulder
-  - bash test/run-docker.sh
-  - cd ..
   - python test.py
 
 
