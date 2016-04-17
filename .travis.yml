@@ -6,8 +6,12 @@ install:
   - pip install -r requirements.txt
 services:
   - docker
+before_script:
+  - git clone https://github.com/letsencrypt/boulder.git
 script:
+  - cd boulder
   - bash test/run-docker.sh
+  - cd ..
   - python test.py
 
 
