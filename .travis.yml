@@ -1,0 +1,13 @@
+sudo: required
+language: python
+python:
+  - "2.7"
+install:
+  - requirements.txt
+services:
+  - docker
+script:
+  - bash test/run-docker.sh
+  - python test.py
+
+

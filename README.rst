@@ -1,6 +1,9 @@
 A Simple Let's Encrypt (ACME) Client
 ====================================
 
+.. image:: https://travis-ci.org/pikacloud/free_tls_certificates.svg?branch=master
+    :target: https://travis-ci.org/pikacloud/free_tls_certificates
+
 **This is a work in progress!**
 
 ``free_tls_certificates`` is a Python 2/3 client library for `Let's Encrypt <https://letsencrypt.org/>`_ or any ACME server that issues `TLS <https://en.wikipedia.org/wiki/Transport_Layer_Security>`_ certificates (aka SSL certificates). The purpose of this library is to make it easier to embed Let's Encrypt within server provisioning applications without resorting to shelling out the ``letsencrypt`` command line client.
